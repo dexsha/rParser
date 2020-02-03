@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>taskrr</title>	
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+		<link rel="stylesheet" href="../public/css/landing.css" />
+		<link rel="icon" type="image/ico" href="images/favico.ico"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<nav>
+					<div id="logo"><a href="#">redditParser</a></div>
+					<!-- <ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#features">Features</a></li>
+						<li><a href="#pricing">Pricing</a></li>
+						<li><a href="#">Contact</a></li>
+						<li><a href="#">Login</a></li>
+					</ul> -->
+				</nav>
+			</header>
+
+			<section class="first">
+				<span class="intro">
+					<form id="parse" method="POST" action="/parse">	
+						<label for="usernames"><h2>Username list</h2></label>
+						<textarea id="usernames" spellcheck="false" name="usernames"></textarea>	
+						<input type="submit"  value="Parse" class="demo">
+					</form>
+				</span>
+
+				<span class="intro">
+					<h2>Output</h2>	
+					<textarea id="output" spellcheck="false"></textarea>
+					<button onclick="copy()" class="demo">Copy</button>	
+				</span>
+			</section>
+		</div>
+
+		<footer class="footer">
+			<p>© 2020 redditParser</p>
+			<!-- <ul>
+				<li><a href="#">Terms</a></li>
+				<li><a href="#">Privacy</a></li>
+			</ul> -->
+		</footer>
+
+
+		<script>
+			var output = document.getElementById('output');
+
+			setInterval(function(){
+				function loadText(){
+			        var xhr = new XMLHttpRequest();
+			        xhr.open('GET', '../public/usernames.txt', true);
+			        xhr.onload = function(){
+			          if(this.status == 200){
+			            output.innerHTML=(this.responseText);
+			          }else{
+			              document.write('Something went Wrong ' + this.status);
+			          }
+			        }
+			        xhr.send();
+
+		      	}
+
+		      loadText();
+	      	},700);
+
+			function copy(){
+				output.select();
+				document.execCommand('copy');
+			};
+		</script>
+	</body>
+</html>
