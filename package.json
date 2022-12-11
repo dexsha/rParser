@@ -7,7 +7,7 @@
     "async": "^2.6.1",
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "jssoup": "^0.0.9",
     "nodemon": "^1.18.4",
     "request": "^2.88.0",
